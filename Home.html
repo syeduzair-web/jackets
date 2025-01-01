@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossorigin="anonymous" zreferrerpolicy="no-referrer" />
+  <title>Document</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    .delivery-details {
+      margin-top: 56px;
+      font-size: 11px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: "Arimo", sans-serif;
+      font-optical-sizing: auto;
+      font-style: normal;
+      letter-spacing: 3px;
+    }
+
+    .main-logo {
+      font-family: "Cinzel Decorative", serif;
+    }
+
+    .main-logo a {
+      text-decoration: none;
+      color: black;
+    }
+
+    nav {
+      /* height: 70px; */
+      font-family: "Montserrat", sans-serif;
+      font-optical-sizing: auto;
+      font-style: normal;
+      text-transform: uppercase;
+      font-size: 15px;
+      letter-spacing: 1px;
+    }
+
+    .nav-link {
+      font-size: 14px;
+      /* color: white; */
+    }
+
+    .main-sroller {
+      height: 100vh;
+      /* width: 100vw; */
+    }
+
+    .box::after {
+      content: "";
+      height: 2px;
+      width: 0;
+      background-color: rgb(75, 73, 73);
+      position: absolute;
+      left: 0;
+      bottom: -10px;
+      transition: 0.3s;
+    }
+
+    .box:hover::after {
+      width: 100%;
+    }
+
+    .main {
+      height: 80px;
+      border-top: 1px solid gray;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .feature-icons {
+      height: 50px;
+      width: 100%;
+      display: flex;
+      font-size: 11px;
+      font-weight: bold;
+    }
+
+    .div1 {
+      height: 50px;
+      width: 33%;
+      border-right: 1px solid black;
+    }
+
+    .div2 {
+      height: 50px;
+      width: 34%;
+      border-right: 1px solid black;
+    }
+
+    .div3 {
+      height: 50px;
+      width: 33%;
+    }
+
+    .gallery-heading {
+      font-family: "Arimo", sans-serif;
+      font-optical-sizing: auto;
+      font-style: normal;
+      letter-spacing: 5px;
+      font-size: 20px;
+      position: absolute;
+      top: 60%;
+      left: 10%;
+    }
+
+    .gallery-button:hover {
+      background: none;
+      color: white;
+      border: 1px solid white;
+    }
+
+    .gallery-button {
+      position: absolute;
+      top: 70%;
+      left: 10%;
+      border: none;
+      outline: none;
+      color: black;
+      padding: 10px 15px;
+      font-size: 13px;
+      text-decoration: none;
+      border: 1px solid white;
+      background-color: white;
+    }
+
+    .gallery-img {
+      transform: scale(1.1);
+      transition: all 3s linear;
+    }
+
+    .gallery-img:hover {
+      transform: scale(1.3);
+    }
+
+    .col-lg-6 {
+      overflow: hidden;
+    }
+
+    .sale {
+      font-family: "Roboto", sans-serif;
+      font-weight: 200;
+      font-style: normal;
+    }
+
+    .sale h1 {
+      font-size: 75px;
+      font-weight: 700;
+    }
+
+    .tc-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .tc-container img {
+      height: 100%;
+      width: 100%;
+    }
+
+    .top-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      transition: 0.5s;
+    }
+
+    .tc-container:hover .top-img {
+      opacity: 1;
+    }
+
+    .fa-cart-shopping {
+      position: absolute;
+      left: 0;
+      color: white;
+      opacity: 0;
+      transition: 0.5s;
+    }
+
+    .tc-container:hover i {
+      opacity: 1;
+    }
+
+    .new {
+      position: absolute;
+      top: 0;
+      left: -10px;
+      height: 20px;
+      width: 78px;
+      font-size: 12px;
+    }
+
+    .new-sale {
+      position: absolute;
+      top: 0;
+      left: 80%;
+      height: 20px;
+      font-size: 12px;
+    }
+
+    .story-heading {
+      font-family: "Arimo", sans-serif;
+      font-optical-sizing: auto;
+      /* font-weight: 700; */
+      font-style: normal;
+      letter-spacing: 4px;
+      font-size: 18px;
+    }
+
+    .story-text {
+      letter-spacing: 1px;
+      font-size: 14PX;
+    }
+
+    .quality-heading {
+      font-family: "Arimo", sans-serif;
+      font-optical-sizing: auto;
+      font-style: normal;
+      letter-spacing: 4px;
+      font-size: 18px;
+    }
+
+    .quality-text {
+      letter-spacing: 1px;
+      font-size: 14PX;
+    }
+
+    .top-seller-heading {
+      font-family: "Arimo", sans-serif;
+      font-optical-sizing: auto;
+      font-style: normal;
+      letter-spacing: 4px;
+      font-size: 30px;
+    }
+
+    .review-img {
+      height: 100px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .review-img img {
+      height: 100%;
+      border-radius: 50px;
+      border: 1px solid black;
+    }
+
+
+    .login-up-heading {
+      color: red;
+      position: absolute;
+      opacity: 0;
+      transition: 0.6s;
+      font-weight: 900;
+    }
+
+    .login-img:hover .sogn-up-heading {
+      opacity: 1;
+    }
+
+    .subscribe::placeholder {
+      color: black;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class=" delivery-details d-flex justify-content-center align-items-center  bg-secondary  ">
+    <p class="text-light  text-center">GET FREE DELIVERY ON ALL ORDERS OF RS 1990 AND ABOVE, WITH DELIVERY WITHIN
+      3-7 DAYS.</p>
+  </div>
+  <!-- <div class="main-logo d-flex justify-content-center align-items-center bg-white">
+      <a href="">
+        <h1 class="fw-bold mt-3">LEATHERO</h1>
+      </a>
+    </div> -->
+  <!-- <nav class="navbar navbar-expand-lg navbar-light m2 mb-4 bg-white">
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+            <li class="dropdown">
+              <a class="nav-link box text-dark" aria-current="page" href="#">MEN'S JACKETS</a>
+            </li>
+            <li class="dropdown">
+              <a class="nav-link box text-dark dropdown" href="#">MEN'S WALLETS</a>
+            </li>
+            <li class="dropdown">
+              <a class="nav-link box text-dark" href="#">
+                BAGS
+              </a>
+            </li>
+            <li class="dropdown">
+              <a class="nav-link box text-dark">
+              </a>
+            </li>
+            <li class="dropdown">
+              <a class="nav-link box text-dark">LADIES BAGS</a>
+            </li>
+          </ul>
+          <form class="d-flex">
+            <div class="cart d-flex justify-content-center align-items-center">
+              <a href="#">
+                <i class="fa-solid fa-user text-danger fs-5"></i>
+              </a>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <a class="text-dark" href="#" style="text-decoration: none;">
+                <i class="fa-solid fa-store fs-5 text-danger"></i>
+              </a>
+            </div>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <input class="form-control" type="search" placeholder="Search" aria-label="Search"
+              style="border: none; outline: none;">
+            <button class="btn btn-outline-danger" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </nav> -->
+  <div class="container-fluid m-0 p-0">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand main-logo fw-bold text-light" href="/Home.html">LEA<span
+            class="text-danger">TH</span>ERO</a>
+        <button class="navbar-toggler back" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active text-light" aria-current="page" href="/Home.html">HOME</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-light" href="#about"> ABOUT</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                PRODUCTS
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item text-dark" href="/pages/MEN'S JACKET.html">MEN'S LEATHER JACKETS</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-light" href="/pages/contact.html">CONTACT</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-light" href="/pages/signup.html">
+                <i class="fa-solid fa-store  text-danger"></i>SIGN UP</a>
+            </li>
+          </ul>
+          <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-danger" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <!-- --------------------navbar completed---------------------- -->
+
+    <!-- -------------------------slider-------------------- -->
+    <div id="carouselExampleInterval" class="carousel slide mb-2" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="10000">
+          <img src="/assets/img/leather.webp" class="d-block w-100" alt="..." style="height: 400px;">
+        </div>
+        <div class="carousel-item" data-bs-interval="2000">
+          <img src="assets/img/banner 1.webp" class="d-block w-100" alt="..." style="height: 400px;">
+        </div>
+        <div class="carousel-item">
+          <img src="/assets/img/new-arrival-sale-2023.webp" class="d-block w-100" alt="..." style="height: 400px;">
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval"
+        data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval"
+        data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+    <div class="main mt-3">
+      <div class="feature-icons">
+        <div class="div1 text-center">
+          <i class="fa-solid fa-users fs-3 mb-3 text-danger"></i>
+          <p>25,000+ Loyal Customers</p>
+        </div>
+        <div class="div2 text-center">
+          <i class="fa-solid fa-truck-fast fs-3 mb-3 text-danger"></i>
+          <p>Fast Shipping</p>
+        </div>
+        <div class="div3 text-center">
+          <i class="fa-solid fa-gift fs-3 mb-3 text-danger"></i>
+          <p>Complimentary Gift Packing</p>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="container">
+      <!-----=////// gallery/////// -->
+      <div class="row mt-3">
+        <div class="col-lg-6 hello" style="position: relative;">
+          <img class="w-100 img-fluid gallery-img" src="/assets/img/gallery-1.jpg" alt="" style="height: 500px;">
+          <h2 class="text-white gallery-heading">OPEN LEATHER JACKET</h2>
+          <a class="gallery-button" href="#">VIEW PRODOUCTS</a>
+
+        </div>
+        <div class="col-lg-6" style="position: relative;">
+          <img class="img-fluid w-100 gallery-img" src="assets/img/gallery-2.avif" alt="" style="height: 500px;">
+          <h2 class="text-white gallery-heading">SLIM JACKET</h2>
+          <a class="gallery-button" href="#">VIEW PRODOUCTS</a>
+        </div>
+        <div class="col-lg-6" style="position: relative;">
+          <img class="img-fluid w-100 gallery-img" src="assets/img/gallery-3.webp" alt="" style="height: 500px;">
+          <h2 class="text-white gallery-heading">BOMBER JACKET</h2>
+          <a class="gallery-button" href="#">VIEW PRODOUCTS</a>
+
+        </div>
+        <div class="col-lg-6" style="position: relative;">
+          <img class="img-fluid w-100 gallery-img" src="assets/img/jacket img.avif" alt="" style="height: 500px;">
+          <h2 class="text-white gallery-heading">BIKER  JACKET</h2>
+          <a class="gallery-button" href="#">VIEW PRODOUCTS</a>
+        </div>
+      </div>
+      <!--///////// sale ////////-->
+      <div class="row mb-5">
+        <div class="col-12 d-flex justify-content-center">
+          <div class="sale text-center">
+            <P class="mt-4">UP TO 30% OFF</P>
+            <h1>SALE<i class="fa-solid fa-bullhorn text-danger fs-1"></i></h1>
+            <P class="mb-5">SPECIAL OFFER</P>
+          </div>
+        </div>
+        <div class="col-lg-3 d-flex justify-content-center">
+          <div class="card" style="width: 18rem;">
+            <a href="/pages/cart1.html">
+              <div class="tc-container">
+                <img src="assets/img/lether cart 1.webp" alt="">
+                <img class="top-img" src="assets/img/leather cart 1 second pose.webp" alt="">
+
+                <div class="new">
+                  <p class=" bg-primary text-center text-white">New Arrival</p>
+                </div>
+                <div class="new-sale">
+                  <p class=" bg-danger text-center text-white"> &nbsp;&nbsp;&nbsp;&nbsp;30%OFF&nbsp;&nbsp;&nbsp;&nbsp;
+                  </p>
+                </div>
+              </div>
+            </a>
+            <div class="card-body text-center" style="font-size: 13px;">
+              <p class="card-title">LEATHERO &COPY; Black Hooded Leather Jacket</p>
+              <p class="card-text">From <big class="text-danger fw-bold">Rs 10,000 </big><small><del>Rs
+                    12,499</del></small></p>
+              <div class="stars text-warning">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star-half-stroke"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 d-flex justify-content-center">
+          <div class="card" style="width: 18rem;">
+            <div class="tc-container">
+              <img src="assets/img/MJ-10.jpg" alt="">
+              <img class="top-img" src="assets/img/MJ-10.1.jpg" alt="">
+
+              <div class="new">
+                <p class=" bg-primary text-center text-white">New Arrival</p>
+              </div>
+              <div class="new-sale">
+                <p class=" bg-danger text-center text-white"> &nbsp;&nbsp;&nbsp;&nbsp;10%OFF&nbsp;&nbsp;&nbsp;&nbsp;</p>
+              </div>
+            </div>
+            <div class="card-body text-center" style="font-size: 13px;">
+              <p class="card-title">LEATHERO &COPY; Black Hooded Leather Jacket</p>
+              <p class="card-text">From <big class="text-danger fw-bold">Rs 11,000 </big><small><del>Rs
+                    15,700</del></small></p>
+              <div class="stars text-warning">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star-half-stroke"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 d-flex justify-content-center">
+          <div class="card" style="width: 18rem;">
+            <div class="tc-container">
+              <img src="assets/img/MJ-6.webp" alt="">
+              <img class="top-img" src="assets/img/MJ-6.1.webp" alt="">
+              <div class="new">
+                <p class=" bg-primary text-center text-white">New Arrival</p>
+              </div>
+              <div class="new-sale">
+                <p class=" bg-danger text-center text-white"> &nbsp;&nbsp;&nbsp;&nbsp;30%OFF&nbsp;&nbsp;&nbsp;&nbsp;</p>
+              </div>
+            </div>
+            <div class="card-body text-center" style="font-size: 13px;">
+              <p class="card-title">LEATHERO &COPY; Black Hooded Leather Jacket</p>
+              <p class="card-text">From <big class="text-danger fw-bold">Rs 11,000 </big><small><del>Rs
+                    13,700</del></small></p>
+              <div class="stars text-warning">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star-half-stroke"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 d-flex justify-content-center">
+          <div class="card" style="width: 18rem;">
+            <div class="tc-container">
+              <img src="assets/img/MJ-3.jpg" alt="">
+              <img class="top-img" src="assets/img/women-bag-hover-2.jpeg" alt="">
+              <div class="new">
+                <p class=" bg-primary text-center text-white">New Arrival</p>
+              </div>
+              <div class="new-sale">
+                <p class=" bg-danger text-center text-white"> &nbsp;&nbsp;&nbsp;&nbsp;20%OFF&nbsp;&nbsp;&nbsp;&nbsp;</p>
+              </div>
+            </div>
+            <div class="card-body text-center" style="font-size: 13px;">
+              <p class="card-title">LEATHERO &COPY; Black Hooded Leather Jacket</p>
+              <p class="card-text">From <big class="text-danger fw-bold">Rs 18,000 </big><small><del>Rs
+                    20,700</del></small></p>
+              <div class="stars text-warning">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star-half-stroke"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <a id="about" href="#" style="text-decoration: none; color: black;">
+        <div class="row mt-5 mb-5">
+          <div class="col-12">
+            <p class="text-center" style="font-size: 40px ; letter-spacing: 6px">ABOUT</p>
+          </div>
+          <div class="col-lg-6 story mt-4 mb-4 d-flex justify-content-center">
+            <img class="img-fluid " src="/assets/img/leather-story.jpg" alt="" style="width: 100%;">
+          </div>
+          <div class="col-lg-6 mt-4 mb-4 story d-flex align-items-end">
+            <div class="story-details m-5">
+              <div class="story-heading">
+                <p>FOR THE LOVE OF LEATHER</p>
+              </div>
+              <p class="story-text mt-5">Our enduring passion for natural leather prompted us to officially launch
+                LEATHERO
+                in 2024 as a retailer of
+                premium quality leather goods in Pakistan. The commitment to stay on the cutting edge is a combination
+                of an
+                innovating approach and our long heritage of leather & textile manufacturing, tracing the foundation
+                back to
+                a trading house of leather hides set up in the early 2002s.</p>
+            </div>
+          </div>
+        </div>
+      </a>
+      <!-------------- QUALITY ----------->
+      <div class="row mb-5">
+        <div class="col-lg-7  d-flex align-items-end mb-5">
+          <div class="quality-details m-5">
+            <div class="quality-heading">
+              <p class="mb-5">AUTHENTIC LEATHER QUALITY</p>
+            </div>
+            <div class="quality-text" mt-5>
+              To provide you with the luxurious feel of genuine leather, our premium materials are sourced from the best
+              tanneries and suppliers. Each product is constructed through many hours of mastery and craftsmanship that
+              justifies its exclusivity and charm for those who want to stand out. The attention to detail is ensured by
+              a
+              skilled & motivated team of experts, and technological support, to provide you with a genuine leather item
+              that can last a lifetime.
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-5 mb-5">
+          <img class="img-fluid" style="width: 100%;"
+            src="https://media.istockphoto.com/id/609716522/photo/leather-samples-with-stitches.jpg?s=612x612&w=0&k=20&c=LdaMEbgBmKepUchAKu-5yf_3kvfrOyIbE187ePgrJdU="
+            alt="">
+        </div>
+      </div>
+      <hr>
+      <!-- -------------BEST SELLERS----------- -->
+      <div class="row mb-5">
+        <div class="col-12 d-flex justify-content-center">
+          <div class="top-seller text-center">
+            <h1 class="top-seller-heading mt-5">OUR BEST SELLERS</h1>
+          </div>
+        </div>
+        <div class="col-lg-3 mt-5 mb-5 d-flex justify-content-center">
+          <div class="card" style="width: 18rem;">
+            <div class="tc-container">
+              <img src="assets/img/seller jacket5.jpg" alt="">
+              <img class="top-img" src="assets/img/seller jacket6.jpg" alt="">
+            </div>
+            <div class="card-body text-center" style="font-size: 13px;">
+              <p class="card-title">LEATHERO &COPY; Old School Brown Leather Jacket</p>
+              <big class="fw-bold">Rs 13,000 </big>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 mt-5 mb-5 d-flex justify-content-center">
+          <div class="card" style="width: 18rem;">
+            <div class="tc-container">
+              <img src="assets/img/seller jacket4.jpg" alt="">
+              <img class="top-img" src="assets/img/seller jacket3.jpg" alt="">
+            </div>
+            <div class="card-body text-center" style="font-size: 13px;">
+              <p class="card-title">LEATHERO &COPY; Sheriff Brown Suede Jacket</p>
+              <big class="fw-bold">Rs 11,000 </big>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 mt-5 mb-5 d-flex justify-content-center">
+          <div class="card" style="width: 18rem;">
+            <a href="/pages/cart2.html">
+              <div class="tc-container">
+                <img src="assets/img/MJ-14.jpg" alt="">
+                <img class="top-img" src="assets/img/MJ-14.1.jpg" alt="">
+              </div>
+            </a>
+            <div class="card-body text-center" style="font-size: 13px;">
+              <p class="card-title">LEATHERO &COPY; Black Hooded Leather Jacket</p>
+              <big class="fw-bold">Rs 21,500 </big>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 mt-5 mb-5 d-flex justify-content-center">
+          <div class="card" style="width: 18rem;">
+            <div class="tc-container">
+              <img src="assets/img/seller jacket.jpg" alt="">
+              <img class="top-img" src="assets/img/seller jacket2.jpg" alt="">
+            </div>
+            <div class="card-body text-center" style="font-size: 13px;">
+              <p class="card-title">LEATHERO &COPY;
+                MYSTICAL BLACK LEATHER JACKET</p>
+              <big class="fw-bold">Rs 15,000 </big>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr class="mt-5">
+      <!----------- reviews ------------->
+      <div class="container  mb-5" style="margin-top: 100px;">
+        <div class="reviews">
+          <div class="row">
+            <div class="col-lg-4 mb-3">
+              <div class="card text-center">
+                <div class="review-img">
+                  <img src="assets/img/user-1.jpg" alt="">
+                </div>
+                <div class="card-title fw-bold">JHON</div>
+                <div class="rating text-warning">
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                </div>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, quasi! Esse quas harum odit, nemo,
+                  praesentium reiciendis ab unde natus provident deserunt blanditiis vel at amet suscipit nisi? Rem,
+                  eius!</p>
+              </div>
+            </div>
+            <div class="col-lg-4 mb-3">
+              <div class="card text-center">
+                <div class="review-img">
+                  <img src="assets/img/user-1.jpg" alt="">
+                </div>
+                <div class="card-title fw-bold">JHON</div>
+                <div class="rating text-warning">
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                </div>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, quasi! Esse quas harum odit, nemo,
+                  praesentium reiciendis ab unde natus provident deserunt blanditiis vel at amet suscipit nisi? Rem,
+                  eius!</p>
+              </div>
+            </div>
+            <div class="col-lg-4 mb-3">
+              <div class="card text-center">
+                <div class="review-img">
+                  <img src="assets/img/user-1.jpg" alt="">
+                </div>
+                <div class="card-title fw-bold">JHON</div>
+                <div class="rating text-warning">
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                </div>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, quasi! Esse quas harum odit, nemo,
+                  praesentium reiciendis ab unde natus provident deserunt blanditiis vel at amet suscipit nisi? Rem,
+                  eius!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer bg-dark text-white" style="margin-top: 100px;">
+      <div class="container">
+        <div class="row ">
+          <div class="col-lg-6">
+            <div class="row">
+              <div class="col-4">
+                <div class="link-details m-4">
+                  <p class="mt-5 mb-4 fw-bold">SHOP</p>
+                  <P>Leather Jackets</P>
+                  <p>Refer to a friend</p>
+                  <p>Free delivery</p>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="help ">
+                  <p class="mt-5 mb-4 fw-bold">HELP</p>
+                  <p>Contact Us</p>
+                  <P>FAQ</P>
+                  <P>Accessibility</P>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="about">
+                  <p class="mt-5 mb-4 fw-bold">ABOUT</p>
+                  <p>Our story</p>
+                  <p>Our quality</p>
+                  <p>Careers</p>
+                  <p>Whalsale</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="subscribe mt-5 text-end">
+              <p class="fs-5 mb-5">Sign up to get 10% off your first order</p>
+              <input class="w-50 rounded rounded-pill bg-white subscribe" type="email" placeholder="your Email Adress"
+                style="height: 40px;">
+              <input class="rounded rounded-pill bg-warning subscribe w-25" type="email" placeholder="subscribe"
+                style="height: 40px; ">
+              <div class="icons mt-4">
+                <i class="fa-brands fa-facebook m-4 fs-1"></i>
+                <i class="fa-brands fa-instagram m-4 fs-1"></i>
+                <i class="fa-brands fa-twitter m-4 fs-1"></i>
+                <i class="fa-brands fa-linkedin m-4 fs-1"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <!-- <script>
+    // gsap.from(".hello",{
+    //   x:-1000,
+    //   duration:2,
+    //   delay:2,
+    // })
+    // gsap.from(".navbar .navbar-brand",{
+    //   x:-20,
+    //   duration:1,
+    //   opacity:0,
+    //   delay:1,
+    // })
+    // gsap.from(".navbar a",{
+    //   x:30,
+    //   duration:1,
+    //   delay:2,
+    //   opacity:0
+    // })
+    var a = gsap.timeline()
+    a.from (".navbar .navbar-brand",{
+      x:-20,
+      duration:1,
+      delay:1,
+      opacity:0,
+
+    })
+    // var a = gsap.timeline()
+    a.from (".navbar a",{
+      x:20,
+      duration:0.5,
+      delay:1,
+      opacity:0,
+      stagger:1,
+
+    })
+  </script> -->
+</body>
+
+</html>
